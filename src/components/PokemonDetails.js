@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import { Typography, Link, CircularProgress, Button } from '@material-ui/core';
+import axios from 'axios';
+
+import toFirstCharUppercase from "../util/formatter";
 
 const PokemonDetails = (props) => {
     let params = useParams()
@@ -8,13 +11,23 @@ const PokemonDetails = (props) => {
     const {pokemonId} = params;
     const [pokemonData, setPokemonData] = useState(undefined);
 
-    const toFirstCharUppercase = name =>
-  name.charAt(0).toUpperCase() + name.slice(1);
+  useEffect(() => {
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)
+      .then(function (response) {
+        const { data } = response;
+        setPokemonData(data);
+      })
+      .catch(function (error) {
+        setPokemonData(false);
+      });
+  }, [pokemonId]);
 
     const generatePokemonJSX = () => {
         const { name, id, species, height, weight, types, sprites } = pokemonData;
         const fullImageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
         const { front_default } = sprites;
+
         return(
             <>
         <Typography variant="h1">
