@@ -1,14 +1,14 @@
 import {Route, BrowserRouter, Routes} from "react-router-dom";
 
-import Grid from "./Grid";
-import DetailsPage from "./DetailsPage";
+import PokemonList from "./components/PokemonList";
+import PokemonDetails from "./components/PokemonDetails";
 
 function App() {
   return (
     <BrowserRouter>
         <Routes>
-      <Route exact path="/" element={<Grid />} />
-      <Route exact path="/:pokemonId" element={<DetailsPage />} />
+      <Route exact path="/" element={<PokemonList />} />
+      <Route exact path="/:pokemonId" element={<PokemonDetails />} />
       </Routes>
     </BrowserRouter>
   );

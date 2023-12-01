@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from "react-router-dom"
 
-const DetailsPage = (props) => {
+const PokemonDetails = (props) => {
     let params = useParams()
     const {pokemonId} = params;
 
@@ -11,4 +11,4 @@ const DetailsPage = (props) => {
 
 }
 
-export default DetailsPage
+export default PokemonDetails
