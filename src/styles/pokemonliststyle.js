@@ -19,14 +19,16 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: "20px",
       marginTop: "5px",
       marginBottom: "5px",
+      borderRadius: "20px"
     },
     searchIcon: {
       alignSelf: "flex-end",
       marginBottom: "5px",
     },
     searchInput: {
-      width: "200px",
+      width: "400px",
       margin: "5px",
+      
     },
   }));
 

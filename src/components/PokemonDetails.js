@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useParams } from "react-router-dom";
-import data from "../data/mockData";
+import { useParams, useNavigate } from "react-router-dom";
 import { Typography, Link, CircularProgress, Button } from '@material-ui/core';
 
 const PokemonDetails = (props) => {
     let params = useParams()
+    let navigate = useNavigate()
     const {pokemonId} = params;
-    const [pokemonData, setPokemonData] = useState(data[`${pokemonId}`]);
+    const [pokemonData, setPokemonData] = useState(undefined);
 
     const toFirstCharUppercase = name =>
   name.charAt(0).toUpperCase() + name.slice(1);
@@ -40,7 +40,15 @@ const PokemonDetails = (props) => {
     }
 
     return (
-        <div>{generatePokemonJSX()}</div>
+        <>
+            {pokemonData === undefined && <CircularProgress />}
+            {pokemonData !== undefined && pokemonData && generatePokemonJSX()}
+            {pokemonData === false && <Typography> Pokemon not found</Typography>}
+
+            {pokemonData !== undefined && (
+                 <Button variant="contained" onClick={() => navigate("/")}>Back to the list </Button>
+      )}
+        </>
     )
 
 }
