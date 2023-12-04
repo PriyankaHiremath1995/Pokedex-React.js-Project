@@ -30,6 +30,14 @@ const useStyles = makeStyles((theme) => ({
       margin: "5px",
       
     },
+    bookmarkButtom: {
+      marginLeft: "700px",
+      marginBottom: "5px",
+    },
+    bookmarkIcon: {
+      marginLeft: "390px",
+      marginBottom: "5px",
+    },
   }));
 
   export default useStyles;
